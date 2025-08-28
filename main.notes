@@ -1,0 +1,101 @@
+react is generally used to build complex frontend
+//in facebook there was a problem when the notification were read then also there count was shown on the icon - there was inconsistency between the dom and the variables of the states 
+//React is a library that means there are exceptions and there are no strict naming conception 
+
+//!React is generally used to make Single page application 
+
+//! in react there is no SEO and also the code is shipped in html and css format and also there is no routing options 
+
+vite is a bundler that bundles all different files in which react code is written 
+
+NPM is a node package manager that is used to install packages also if we don't want to install it and directly use it we can use npx 
+
+//! DOM is a tree like structure that consist of node and these nodes are html tags comments . the webpage is seen as a tree of objects - so that js can interact with html or css 
+
+base code for react 
+createRoot(document.getElementById('root')).render(
+    <App />
+)
+
+
+//* if we want to make a page such that on one click value gets updated at 5 different places so we have to use dom multiple times for each element and thus this can make code builky therefore react is used 
+
+//!Hooks in react
+usestate hook is mainly used when we want to make update at multiple places and without targeting the dom element every time 
+
+//!Virtual Dom
+->[so basically whenever the changes are made to the dom the dom gets reprinted]
+->[the loading of screen occurs due to this only because the dom is getting re printed]
+->[Real Dom updates are slow because it recalculate and repaints styles and re render the page even though we have just upfated a counter]
+->[so basically Virtual Dom is just a copy of actual dom , when something changes React updates the virtual Dom first , then react compares old virtual dom and new virtual dom and find exactly which nodes ]
+
+//! Hydration
+->[so basically as the web page is printed with all the nodes eg. button and all and then when js is injected then button starts working this process of injecting js is called as Hydration]
+
+//!Reconcillation
+->[Reconcillation is a differentiation algorithm which is based on difference of previous and current state.This algorithm is usd to compare the previous and the current updated dom  ]
+->[React fiber is purely based on reconciler and if some components are changed completely then it does not compare then it directly replaces them]
+
+//!Updating the UI in react
+->[IN UI it is not necessary for every update to be applied immediately , so updates have more prefereancce over others for example animation updates need to be changed instantly when as data storage updates can take time]
+->[Different approaches can be used for updation as well , a push based approach requires the app(you) to decide the schedule work whereas pull based work requires react to make decision on it own]
+
+//!React fibre
+->[Mainly react fibre is used to scheduling the tasks which includes aborting the request delaying the request , pause the request , assign priority to different type of work, reuse previous work ]
+
+
+//*TAILWIND and PROPS
+
+--> //! PROPS IN REACT
+-->[props stands for properties,they are input you pass into a React component they are used to send data from parent component to child component]
+-->[Suppose there is a card component named as Card.jsx and if we are using this component inside our App component so we can pass props along with this Card component like <Card name="sahil" fname="yadav"/> so this is how it need to be done ]
+-->[this will pass it as object in key value format ]
+-->[you cannot pass array as a prop but you can pass a object inside the props]
+
+
+//!React Interview question 
+
+-->[Suppose we are given a counter in react and on increase button click we get 
+    setCounter(counter+1)
+    setCounter(counter+1)
+    setCounter(counter+1)
+    setCounter(counter+1)
+    //this will not change the counter 4 times instead it will do the same thing 4 times that is increasing counter by 1 
+    //this uses react fibre which generally delay the task for next to complete and at last it is doing the last only
+]
+
+-->[So we can instead do is to pass a callback to the setCounter 
+    setCounter((counter)=>counter+1) // this will instead give the updated state
+    setCounter((counter)=>counter+1)
+    setCounter((counter)=>counter+1)
+    setCounter((counter)=>counter+1)
+
+    this will surely increase the counter every time 
+]
+
+
+//!Different type of hooks 
+
+//*usecallback hook
+
+-->[usecallback is  a hook in react that allows you to cache a function between multiple rendering]
+-->[ it mainly contains an array and the dependecies that are passed in the array format
+  the dependencies involve all the variables that are responsible for changing the final result]
+
+//*useeffect hook
+
+-->[A use effect hook lets you perform side effects in functional components this can be calling function or updating values anything other than other than rendering ui]
+-->[SO basically usecallback hook is generally for caching the function so that it dont get called even if there is no change in the dependencies]
+
+//![when useeffect depends on a function but that function get recreated on every rerender, useeffect would think that function changed
+//! and it will run for no reason ]
+
+
+//*CUSTOM HOOKS IN JS 
+
+-->[CUSTOM hooks can be created using directly returning two variables in an array ]
+
+//!REACT-ROUTER-DOM
+-->Link-[React ROUTER generally uses link in place of href mainly for redirecting causing no reloading]
+-->NavLink-[In case of navlink it is having pre defined {isActive which tells if this link is active }]
+-->[We need to wrap the App component inside browserRouter for link and navlink to work ]
