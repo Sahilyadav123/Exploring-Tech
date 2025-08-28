@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        .circle {
+      width: 30px;
+      height: 30px;
+      background-color: red;
+      border-radius: 50%;
+      position: absolute;
+      pointer-events: none; /* So clicks pass through the circle */
+      transition: opacity 0.5s ease;
+    }
+    </style>
+  </head>
+  <body style="background-color: #414141;">
+    <h2>Amazing Images</h2>
+    <div id="images">
+      <ul >
+        <li>
+          <img
+            width="200px"
+            id="photoshop"
+            src="https://images.pexels.com/photos/6732010/pexels-photo-6732010.jpeg"
+            alt="Vibrant blue abstract light trails"
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="photoshop"
+            src="https://images.pexels.com/photos/12564252/pexels-photo-12564252.jpeg"
+            alt="Fluid colorful abstract gradients"
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="photoshop"
+            src="https://images.pexels.com/photos/3571114/pexels-photo-3571114.jpeg"
+            alt="Double exposure floral silhouette"
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="photoshop"
+            src="https://images.pexels.com/photos/15853367/pexels-photo-15853367.jpeg"
+            alt="Urban buildings double exposure collage"
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="photoshop"
+            src="https://images.pexels.com/photos/2832432/pexels-photo-2832432.jpeg"
+            alt="Graphic design desk workspace"
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="photoshop"
+            src="https://images.pexels.com/photos/219692/pexels-photo-219692.jpeg"
+            alt="Colorful digital geometric art"
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="photoshop"
+            src="https://images.pexels.com/photos/1103532/pexels-photo-1103532.jpeg"
+            alt="Double exposure creative photo"
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="photoshop2"
+            src="https://images.pexels.com/photos/196667/pexels-photo-196667.jpeg"
+            alt="Abstract smoke swirl design"
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="photoshop1"
+            src="https://images.pexels.com/photos/1402787/pexels-photo-1402787.jpeg"
+            alt="Minimalist purple shapes graphic"
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="photoshop"
+            src="https://images.pexels.com/photos/1858017/pexels-photo-1858017.jpeg"
+            alt="Creative digital abstract pattern"
+            onclick="alert('clicked')"
+            style="cursor: pointer;"
+          />
+        </li>
+      </ul>
+    </div>
+  </body>
+
+  <script>
+    // document.getElementById('photoshop1').onclick=()=>{   // this is hoe to execute the onclick function 
+    //     alert('clicked');
+    // }
+
+    //better approach
+    // document.getElementById('photoshop2').addEventListener('click',(e)=>{
+    //     alert('clicked'); // 
+    //     console.log("event child clicked")
+    //     // e.stopPropagation(); // this allow to stop the propagation means no event bubbling 
+    // },true)
+
+    // document.getElementById('images').addEventListener('click',(e)=>{
+    //     console.log("event parent clicked")
+    //     e.stopPropagation();
+    
+    // },true)
+
+    // prevent default is an generally used for preventing default behaviour for example when we click on a link the it will not redirect or clicking submit does not reload the page
+
+    //also stop propagation is used for preventing event bubbeling
+    //bubbleling occurs generally when we are using event listener and it is applied on both parent and child element
+
+
+
+    document.querySelector('#images').addEventListener('click',(e)=>{
+          console.log(e.target.tagName);
+          if (e.target.tagName==="IMG") {
+              e.target.parentNode.style.display="none";  // using this way it will not delete the whoole ul list 
+              console.log(e.target);
+          }
+          
+          
+    })
+
+      // document.addEventListener('click',(event)=>{
+      //     const circle=document.createElement('div'); 
+      //     circle.className='circle';
+          
+      //     circle.style.left=event.clientX+'px';
+      //     circle.style.top=event.clientY+'px';
+      //     document.body.appendChild(circle);  
+      //     setTimeout(() => {
+      //   circle.style.opacity = '0';
+      //   setTimeout(() => circle.remove(), 500);
+      // }, 300);
+      // });
+    
+  </script>
+</html>

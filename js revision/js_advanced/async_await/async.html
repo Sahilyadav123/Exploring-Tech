@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Chai aur Code</h1>
+    <button id="btn">Stop</button>
+</body>
+<script>
+    //settimeout requires a callback and a timeout which is a number 
+    setTimeout(() => {
+        console.log("sahil"); // this will get printed after 2 seconds
+    }, 2000);
+
+    const alert1=()=>{
+        alert('sale starts in 5 seconds')
+    }
+
+    const change=setTimeout(alert1, 2000);
+    document.querySelector('#btn').addEventListener('click',()=>{
+        clearTimeout(change); // this makes sure that once the cleartimeout is called then the settimeout is stopped after that and it is placed on event listener 
+    })
+</script>
+</html>

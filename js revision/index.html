@@ -1,0 +1,28 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <button id="blue">BLue</button>
+        <button id="orange">Orange</button>
+    </body>
+    <script>
+        const blue=document.getElementById("blue");
+        const orange=document.getElementById("orange");
+        const body=document.querySelector('body');
+       function click(color) {
+
+        return function (){
+            body.style.backgroundColor=color;
+        }
+        
+       }
+       blue.onclick=click("blue")       // this takes up  a function
+       orange.onclick=
+        click("orange");
+       
+    </script>
+    </html>

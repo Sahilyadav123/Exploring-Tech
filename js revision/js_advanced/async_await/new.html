@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Chai or js</h1>
+    <button id="btn">Stop</button>
+    <button id="btn-1">Start</button>
+
+</body>
+<script>
+
+    // let interval_id=null;
+    const start=()=>{
+        console.log("sahil");
+        console.log(Date.now().toLocaleString());
+    }
+    
+    let event=null;
+    document.querySelector('#btn').addEventListener('click',()=>{
+        if(event){
+            console.log("stopped")
+            clearInterval(event);
+            event=null;
+        }
+        
+    });
+    document.querySelector('#btn-1').addEventListener('click',()=>{
+        if(event===null){
+            console.log("started")
+            event=setInterval(start, 1000);
+            
+        }
+        // setInterval(start, 1000);
+    });
+// 
+</script>
+</html>

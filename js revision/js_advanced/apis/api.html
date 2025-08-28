@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="click">Click</button>
+  </body>
+  <script>
+    const xhr = new XMLHttpRequest(); // an object has been created since this xmlhttprequest is an class
+    xhr.open("GET", "https://api.github.com/users/hiteshchoudhary");
+    console.log("heree");
+    let data;
+    
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4) {
+        data = JSON.parse(this.responseText); // this will be of string format so json.parse is used to convert string into json format
+        console.log(typeof data); // this returns the json format response of api
+        console.log(data);
+      } 
+    };
+             
+    xhr.send(); 
+    const btn=document.querySelector('#click');
+    btn.addEventListener('click',()=>{
+        const div=document.createElement("div");
+        div.style.border="2px solid red";
+        div.innerHTML= `<h1>${data.name}</h1> <h1>${data.bio}</h1>`;
+        document.body.appendChild(div);
+        document.body.appendChild(div);
+    })    
+  </script>
+</html>

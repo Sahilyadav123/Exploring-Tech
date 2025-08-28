@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="start">start</button>
+    <button id="stop">stop</button>
+</body>
+<script>
+    const color_change=()=>{
+        const body=document.querySelector('body');
+        const color='#'+Math.floor(Math.random() * 0xffffff).toString(16);
+        body.style.backgroundColor=color;
+        const div=document.createElement('div');
+        // div.innerHTML=color;
+        // // div.style.color = '#fff';
+        // body.appendChild(div);
+
+    }
+    let event=null;
+    document.querySelector('#start').addEventListener('click',()=>{
+        if(event===null){
+            event=setInterval(color_change, 1000);
+        }
+        
+    });
+    document.querySelector('#stop').addEventListener('click',()=>{
+        
+        clearInterval(event);
+    });
+</script>
+</html>
