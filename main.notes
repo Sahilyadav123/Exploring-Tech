@@ -99,3 +99,33 @@ usestate hook is mainly used when we want to make update at multiple places and 
 -->Link-[React ROUTER generally uses link in place of href mainly for redirecting causing no reloading]
 -->NavLink-[In case of navlink it is having pre defined {isActive which tells if this link is active }]
 -->[We need to wrap the App component inside browserRouter for link and navlink to work ]
+
+//!Context Api 
+-->[Generally when we are creating component there is a parent compoent and then it has child ]
+-->[Suppose if you have a App.jsx it contains Dashboard.jsx and then this dashboard contain header and this header contain
+    the menu component so if we need to pass a prop from App.jsx to the menu.jsx then we need to follow the hieracrchy of passing
+    it to the Dashboard then it passes to the header and then header pass this as prop to menu]
+//!This is called as prop drilling
+-->[Even though there is no need of this data but still we are using this data and we are passing this data because any sub children is using this data]
+-->[To handle this we can use redux and along with thta Context APi]
+
+//!Creating context UserContext.js
+import React from "react";
+const UserContext = React.createContext()
+export default UserContext
+
+//Then we need to create a provider component <UserContext>
+
+//!We create a compoent called UserContextProvider.jsx
+import React from "react";
+import UserContext from "./UserContext";
+const UserContextProvider=({children})=>{
+    return (
+        <UserContext.Provider>
+        {children}
+        </UserContext.Provider>
+    )
+}
+export default UserContextProvider;
+
+//!After that we bind the UserContextProvider inside the fragement in the app.jsx

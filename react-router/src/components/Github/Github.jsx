@@ -35,12 +35,12 @@ function Github() {
     </>
   );
 }   
-export default Github;
+export default Github;  
 
-export const githubInfoLoader=async ({params})=>{
-    let {username}=params;
-    // let {username}=useParams();
-    const response=await fetch(`https://api.github.com/users/${username}`)
-    return response.json();
-    console.log(data)
-}
+  export const githubInfoLoader=async ({params})=>{  // here the object is having params as one of keys therefore we destruct it and then using this we destruct username
+      let {username}=params;
+      // let {username}=useParams();
+      const response=await fetch(`https://api.github.com/users/${username}`)
+      return response.json();
+      console.log(data)   
+  }
