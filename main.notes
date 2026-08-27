@@ -129,3 +129,91 @@ const UserContextProvider=({children})=>{
 export default UserContextProvider;
 
 //!After that we bind the UserContextProvider inside the fragement in the app.jsx
+
+//*Simple way when we want to do it wihtout context api
+
+function App() {
+  const [theme, setTheme] = useState("light");
+  return <Layout theme={theme} setTheme={setTheme} />;
+}
+
+function Layout({ theme, setTheme }) {
+  return <Header theme={theme} setTheme={setTheme} />;
+}
+
+function Header({ theme, setTheme }) {
+  return <ThemeButton theme={theme} setTheme={setTheme} />;
+}
+
+function ThemeButton({ theme, setTheme }) {
+  return (
+    <button onClick={() => setTheme(theme === "light" ? "dark" : "light")}>
+      Switch to {theme === "light" ? "Dark" : "Light"}
+    </button>
+  );
+}
+
+//! this is the approach that is called as prop drilling we can also use another approach called context api where we create a context 
+const [themeMode, setThemeMode] = useState("light");
+  return (
+    <ThemeContext.Provider value={{ themeMode,setThemeMode}}>
+      {children}
+    </ThemeContext.Provider>
+  );
+}
+
+and then simply the component can use it 
+const {  themeMode  } = useContext(ThemeContext);
+
+
+//!React Redux:
+It is a state management library for Javascript applications manages to share and access data across pages in a predictable way
+Redux keeps one central place a store where all the data is present
+
+Store: This is like a central wareshouse , it contains the states tree in one place
+Action: This is an object that describes what to do , it consist of payload (suppose we need to add something action is add)
+Dispatch: This simply sends the action to the redux (Dispatch simply updates the store using reducer)
+//!reducer need to be called inside the dispatch 
+Reducer:this is a pure function that takes state and action and updates  state 
+selector:a function to extract data from redux store
+//!createSlice and initialState are to be used in react redux   
+
+React consist of reducers and the reducer contain properties and function 
+state.todos=state.todos.filter((todo)=>todo.id!==action.payload) // this is generally used if we want to go with 
+removing a todo
+
+1. creating a store using configureStore in the app folder
+2. creating reducer inside a featurefolder 
+3. import createSlice and then create a initialState it can have array as well as object
+4. we create initial slice whihc have name initial state then reducer .
+5. in reducer we write declare the function and write the logic here in the reducer
+6. state will tell you about the current state of the initial state
+
+
+//! if we are using dispatch like dispatch(addTodo("Learn Redux"))
+so here we can directly use it like action.payload but if we are passing object inside the
+addTodo then we need to pass id
+addTodo: (state, action) => {:
+    const todo = {
+        id: action.payload.id, 
+        text: action.payload.text
+    }
+    state.todos.push(todo)
+}
+
+//! since we are using 
+export const store = configureStore({
+        reducer: todoReducer
+    });
+// here we can directly go with state.todos 
+
+
+directly reducer here and no object like 
+reducer: {
+  tasks: todoReducer,
+}
+
+//in this case we need to use state.tasks.todos or then name c=given to initial state
+onClick={() => dispatch(removeTodo(todo.id))}
+
+this is how remove occurs 
